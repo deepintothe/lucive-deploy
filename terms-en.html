@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUCIVE · Terms of Service</title>
+<script src="./_integrations.js"></script>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FFF9F7; --card:#fff; --elevated:#FAEFE8;
+  --divider:rgba(63,38,52,.08);
+  --text-1:#2A1A22; --text-2:#6B5560; --text-3:#9C8893;
+  --accent:#C97B89; --accent-light:#FFE8EC;
+  --gold:#D6B07C; --gold-deep:#b8945e;
+  --display:'Cormorant Garamond',serif;
+  --sans:'Inter',-apple-system,'Pretendard','Apple SD Gothic Neo',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --top-h:60px;
+}
+html,body{background:var(--bg);color:var(--text-1);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+body{min-height:100vh;line-height:1.7}
+
+.top{position:sticky;top:0;z-index:60;height:var(--top-h);display:flex;align-items:center;gap:14px;padding:0 22px;background:rgba(255,249,247,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--divider);box-shadow:0 2px 12px rgba(63,38,52,.04)}
+.top-back{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:#fff;border:1px solid rgba(63,38,52,.16);color:var(--text-2);font-family:var(--sans);font-size:12.5px;font-weight:700;text-decoration:none;border-radius:999px;cursor:pointer;transition:all .2s var(--ease)}
+.top-back:hover{border-color:var(--accent);color:var(--accent)}
+.top-back .arr{font-family:var(--mono);font-size:13px;font-weight:800}
+.top-spacer{flex:1}
+.top-brand{font-family:var(--mono);font-weight:800;font-size:13px;letter-spacing:.45em;color:var(--text-1);text-decoration:none}
+.top-brand:hover{color:var(--accent)}
+@media(max-width:560px){.top{padding:0 14px;gap:10px}.top-back{padding:7px 12px;font-size:11.5px}.top-brand{font-size:11.5px;letter-spacing:.3em}}
+@media(max-width:400px){.top-back span:not(.arr){display:none}.top-back{padding:8px 10px}}
+
+main{position:relative;z-index:5;max-width:760px;margin:0 auto;padding:56px 24px 80px}
+
+.doc-kicker{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.32em;color:var(--gold-deep);text-transform:uppercase;padding:5px 13px;border:1px solid rgba(214,176,124,.32);background:rgba(214,176,124,.08);border-radius:999px;margin-bottom:22px;font-weight:800}
+.doc-title{font-family:var(--display);font-size:clamp(34px,5vw,50px);font-weight:700;line-height:1.18;color:var(--text-1);margin-bottom:14px;letter-spacing:-.01em}
+.doc-title em{font-style:italic;color:var(--accent)}
+.doc-meta{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:.1em;margin-bottom:38px;padding-bottom:18px;border-bottom:1px solid var(--divider);font-weight:700}
+.doc-meta b{color:var(--gold-deep);font-weight:800}
+.doc-lede{font-family:var(--display);font-style:italic;font-size:18px;line-height:1.65;color:var(--text-2);margin-bottom:36px}
+
+h2{font-family:var(--display);font-size:22px;font-weight:700;color:var(--text-1);margin:36px 0 14px;letter-spacing:-.005em;display:flex;align-items:baseline;gap:8px}
+h2::before{content:'§';color:var(--gold);font-family:var(--display);font-weight:600;font-size:22px;font-style:italic}
+h3{font-family:var(--sans);font-size:14px;font-weight:700;color:var(--text-1);margin:18px 0 8px;letter-spacing:-.005em}
+p{font-size:14.5px;line-height:1.78;color:var(--text-2);margin-bottom:12px}
+p b{color:var(--text-1);font-weight:700}
+ul,ol{padding-left:22px;margin-bottom:14px;font-size:14px;line-height:1.78;color:var(--text-2)}
+li{margin-bottom:5px}
+li b{color:var(--text-1);font-weight:700}
+a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:2px;transition:color .2s var(--ease)}
+a:hover{color:var(--accent)}
+
+.callout{background:rgba(214,176,124,.08);border:1px solid rgba(214,176,124,.24);border-left:3px solid var(--gold);padding:16px 20px;border-radius:10px;margin:20px 0;font-family:var(--display);font-style:italic;font-size:15px;line-height:1.65;color:var(--text-1)}
+.callout b{color:var(--gold-deep);font-style:normal}
+.callout.alert{border-left-color:var(--accent);background:rgba(201,123,137,.06);border-color:rgba(201,123,137,.22)}
+.callout.alert b{color:var(--accent)}
+
+.contact-card{margin-top:38px;padding:20px 22px;background:#fff;border:1px solid var(--divider);border-radius:14px;box-shadow:0 4px 14px rgba(63,38,52,.04)}
+.contact-card h3{margin-top:0;color:var(--gold-deep);font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;margin-bottom:10px}
+.contact-card p{font-size:14px;margin-bottom:6px;color:var(--text-1)}
+
+.site-footer{background:var(--bg);color:var(--text-3);padding:32px 24px 36px;border-top:1px solid var(--divider);position:relative;z-index:20;margin-top:60px}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justify-content:space-between}
+.footer-brand{display:flex;flex-direction:column;gap:3px}
+.footer-logo{font-family:var(--mono);font-weight:800;font-size:13px;letter-spacing:.45em;color:var(--accent)}
+.footer-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.28em;color:var(--text-3);text-transform:uppercase}
+.footer-links{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.footer-links a{font-family:var(--sans);font-size:12.5px;color:var(--text-2);text-decoration:none;transition:color .2s var(--ease)}
+.footer-links a:hover{color:var(--text-1)}
+.footer-links a.current{color:var(--accent);font-weight:700}
+.footer-sep{color:var(--text-3);font-size:11px}
+.footer-copy{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--text-3)}
+@media(max-width:640px){.footer-inner{flex-direction:column;text-align:center;gap:14px}.footer-brand{align-items:center}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a href="#" class="top-back" onclick="if(history.length>1){history.back();return false}else{location.href='./v40-lp-wide-en.html';return false}"><span class="arr">←</span><span>Back</span></a>
+  <div class="top-spacer"></div>
+  <a href="#" class="top-brand" onclick="if(history.length>1){history.back();return false}else{location.href='./v40-lp-wide-en.html';return false}">LUCIVE</a>
+  <div class="top-spacer"></div>
+</header>
+
+<main>
+  <div class="doc-kicker">Terms of Service</div>
+  <h1 class="doc-title"><em>Terms</em> of Service</h1>
+  <div class="doc-meta">Effective date · <b>2026-04-22</b> · Pre-release draft</div>
+
+  <p class="doc-lede">
+    These terms govern the pre-registration service and core test participation provided by Lucive (the "Company"). By submitting the pre-registration form, you are deemed to have agreed to these terms.
+  </p>
+
+  <h2>1. Purpose</h2>
+  <p>These terms define the conditions for using the <b>pre-registration service</b>, the rights, obligations, and responsibilities between the Company and users, and matters related to core testing and benefits.</p>
+
+  <h2>2. Definitions</h2>
+  <ul>
+    <li><b>Service</b> · The Lucive pre-registration website and related features provided by the Company</li>
+    <li><b>Pre-registrant</b> · A user who has registered an email through the website and agreed to these terms</li>
+    <li><b>Core Tester</b> · A pre-registrant who has participated in the pre-release survey and agreed to active feedback and activity during the alpha period</li>
+    <li><b>Dip</b> · In-game points awarded for activities during the pre-registration period</li>
+    <li><b>Promo Code</b> · A unique identifier used to verify referral relationships at sign-up</li>
+  </ul>
+
+  <h2>3. Services Provided</h2>
+  <p>The Company provides the following services.</p>
+  <ul>
+    <li>Pre-registration email receipt and confirmation</li>
+    <li>Alpha launch news and benefit notification emails</li>
+    <li>Core user pre-release survey</li>
+    <li>Friend invite links and promo codes</li>
+  </ul>
+
+  <h2>4. Pre-registration Benefits</h2>
+  <p>The alpha opens to all pre-registrants without separate selection. Additional benefits are as follows.</p>
+  <ul>
+    <li><b>For everyone</b> · Pre-registration-exclusive promotional access to the basic service during the alpha period</li>
+    <li><b>Referral 1st place</b> · Basic plan free for the lifetime of the service (1 account · non-transferable · excludes premium plans)</li>
+    <li><b>Referral 2nd-5th place</b> · 5 months of basic plan free for you and all invited friends</li>
+    <li><b>Survey completion reward</b> · 500 Dip granted instantly</li>
+    <li><b>Core tester activities</b> · Additional Dip and separate guidance (specific benefits announced at alpha launch)</li>
+  </ul>
+  <div class="callout">
+    <b>Note ·</b> Specific benefit contents, payment methods, and validity periods will be finalized at the official service launch; this draft may change. Changes will be announced by email in advance.
+  </div>
+
+  <h2>5. User Obligations</h2>
+  <ul>
+    <li>You must provide your own accurate email and not impersonate others.</li>
+    <li>Only one account per person is allowed.</li>
+    <li>You must not obtain benefits through automation tools, multiple accounts, fake promo usage, or other fraudulent means.</li>
+    <li>You must not collect, disclose, or misuse other users' personal information learned through the service.</li>
+  </ul>
+
+  <h2>6. Anti-Abuse</h2>
+  <div class="callout alert">
+    If <b>duplicate sign-ups, automation, fake accounts, or abnormal referral patterns</b> are detected, the related account's <b>rank, Dip, and selection privileges may be revoked without prior notice</b>. This is an unavoidable measure for a healthy community.
+  </div>
+  <p>The Company may take the following actions against detected misconduct.</p>
+  <ul>
+    <li>Invalidation of the pre-registration</li>
+    <li>Recovery of granted Dip</li>
+    <li>Invalidation of issued promo codes</li>
+    <li>Legal action in severe cases</li>
+  </ul>
+
+  <h2>7. Service Changes & Discontinuation</h2>
+  <p>The Company may change or discontinue service content as operationally or technically necessary. Major changes will be announced in advance, and impacts on pre-registration benefits will be notified by email.</p>
+
+  <h2>8. Limitation of Liability</h2>
+  <p>The Company is not liable for service disruptions caused by the following.</p>
+  <ul>
+    <li>Force majeure such as natural disasters, war, or similar events</li>
+    <li>The user's intent or negligence</li>
+    <li>Intentional service interference by a third party</li>
+  </ul>
+
+  <h2>9. Privacy Protection</h2>
+  <p>Matters regarding the collection, use, and storage of personal information follow the separately defined <a href="./privacy-en.html">Privacy Policy</a>.</p>
+
+  <h2>10. Dispute Resolution</h2>
+  <p>Disputes related to these terms are governed by the laws of the Republic of Korea, with the Seoul Central District Court as the court of first instance.</p>
+
+  <h2>11. Changes to Terms</h2>
+  <p>The Company may change the terms when necessary; changes will be announced 7 days before they take effect (30 days for changes unfavorable to users). Users who do not agree to changed terms may stop using the service.</p>
+
+  <div class="callout">
+    <b>These terms are a pre-release draft.</b><br>
+    They will be finalized before the official service launch; changes will be announced via notice or email.
+  </div>
+
+  <div class="contact-card">
+    <h3>Terms Inquiries</h3>
+    <p><b>Contact</b> · Lucive Operations</p>
+    <p><b>Email</b> · <a href="mailto:lucive_official@deepintothe.xyz">lucive_official@deepintothe.xyz</a></p>
+    <p><b>Response time</b> · Within 3 business days</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">LUCIVE</span>
+      <span class="footer-tag">Deep Into The · 2026</span>
+    </div>
+    <nav class="footer-links">
+      <a href="./privacy-en.html">Privacy Policy</a>
+      <span class="footer-sep">·</span>
+      <a href="./terms-en.html" class="current">Terms</a>
+      <span class="footer-sep">·</span>
+      <a href="mailto:lucive_official@deepintothe.xyz">Contact</a>
+    </nav>
+    <div class="footer-copy">© 2026 Lucive · All rights reserved.</div>
+  </div>
+</footer>
+</body>
+</html>

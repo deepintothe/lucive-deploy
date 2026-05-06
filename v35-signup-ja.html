@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUCIVE · コアテスター事前登録</title>
+<script src="./_integrations.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF9F7; --card:#fff; --elevated:#FAEFE8;
+  --divider:rgba(63,38,52,.08);
+  --text-1:#2A1A22; --text-2:#6B5560; --text-3:#9C8893;
+  --accent:#C97B89; --accent-light:#FFE8EC;
+  --gold:#D6B07C; --gold-deep:#b8945e;
+  --display:'Cormorant Garamond',serif;
+  --sans:'Inter',-apple-system,'Pretendard','Apple SD Gothic Neo',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--bg);color:var(--text-1);font-family:var(--sans);min-height:100vh;-webkit-font-smoothing:antialiased}
+em{font-style:italic;color:var(--accent)}
+a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(201,123,137,.3);text-underline-offset:2px}
+a:hover{text-decoration-color:var(--accent)}
+
+.shell{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px}
+
+.brand{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.5em;font-weight:800;color:var(--accent);text-transform:uppercase;margin-bottom:32px;text-decoration:none}
+.brand .dot{display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--accent);margin:0 12px;vertical-align:middle}
+
+.card{width:100%;max-width:480px;background:var(--card);border-radius:20px;padding:36px 32px 32px;box-shadow:0 14px 48px rgba(63,38,52,.1),0 0 0 1px rgba(201,123,137,.12)}
+
+.eye{font-family:var(--mono);font-size:11px;letter-spacing:.32em;font-weight:800;color:var(--gold-deep);text-transform:uppercase;margin-bottom:8px}
+.h{font-family:var(--display);font-size:32px;font-weight:700;line-height:1.18;color:var(--text-1);margin-bottom:8px}
+.h em{font-style:italic;color:var(--accent)}
+.sub{font-size:13.5px;color:var(--text-2);line-height:1.6;margin-bottom:24px}
+
+.form{display:flex;flex-direction:column;gap:14px}
+.label{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;font-weight:800;color:var(--text-2);text-transform:uppercase;margin-bottom:-6px}
+.input{width:100%;padding:14px 16px;background:var(--bg);border:1.5px solid rgba(63,38,52,.14);color:var(--text-1);font-family:var(--sans);font-size:15px;font-weight:500;outline:none;border-radius:12px;transition:all .18s var(--ease)}
+.input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(201,123,137,.15);background:#fff}
+.input::placeholder{color:var(--text-3)}
+
+.check-row{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-2);line-height:1.55;cursor:pointer;user-select:none;padding:4px 0}
+.check-row input[type="checkbox"]{flex-shrink:0;width:17px;height:17px;margin-top:2px;accent-color:var(--accent);cursor:pointer}
+
+.submit{width:100%;padding:16px 24px;background:linear-gradient(180deg,var(--gold),var(--gold-deep));color:#2c1f00;border:none;border-radius:999px;font-family:var(--sans);font-size:15.5px;font-weight:800;letter-spacing:-.005em;cursor:pointer;box-shadow:0 14px 32px rgba(214,176,124,.32);transition:all .2s var(--ease);margin-top:8px}
+.submit:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(214,176,124,.42)}
+.submit:active{transform:translateY(0)}
+.submit:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+
+.foot{text-align:center;margin-top:18px;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:var(--text-3);text-transform:uppercase;font-weight:700}
+.back-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-family:var(--mono);font-size:11.5px;color:var(--text-3);text-decoration:none;letter-spacing:.04em}
+.back-link:hover{color:var(--accent);text-decoration:underline}
+
+/* === SUCCESS state === */
+.success{display:none;width:100%;max-width:520px;background:var(--card);border-radius:20px;padding:40px 32px 32px;text-align:center;box-shadow:0 14px 48px rgba(63,38,52,.1),0 0 0 1px rgba(214,176,124,.18);animation:fadeIn .5s var(--ease)}
+.success.show{display:block}
+
+/* Promo code block */
+.promo-block{margin-top:20px;padding:18px;background:linear-gradient(180deg,rgba(214,176,124,.1),rgba(201,123,137,.06));border:1px solid rgba(214,176,124,.32);border-radius:14px;text-align:left}
+.promo-h{font-family:var(--display);font-style:italic;font-size:15px;font-weight:700;color:var(--text-1);margin-bottom:10px;text-align:center;line-height:1.4}
+.promo-h em{color:var(--gold-deep)}
+.promo-row{display:flex;align-items:center;gap:8px;margin-top:6px}
+.promo-row-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;font-weight:800;color:var(--text-3);text-transform:uppercase;width:62px;flex-shrink:0}
+.promo-row-field{flex:1;display:flex;align-items:center;gap:6px;background:#fff;border:1px solid rgba(63,38,52,.1);border-radius:10px;padding:6px 6px 6px 12px}
+.promo-row-field code{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--text-1);flex:1;letter-spacing:-.005em}
+.promo-row-field button{padding:6px 12px;background:var(--gold);color:#2c1f00;border:none;border-radius:8px;font-family:var(--mono);font-size:10.5px;font-weight:800;cursor:pointer;letter-spacing:.06em}
+.promo-row-field button:hover{background:var(--gold-deep);color:#fff}
+.share-row{display:flex;gap:6px;margin-top:12px}
+.share{flex:1;padding:9px;background:#fff;border:1px solid rgba(63,38,52,.1);border-radius:8px;font-family:var(--sans);font-size:12px;font-weight:700;color:var(--text-1);cursor:pointer;transition:all .15s}
+.share:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.share.kakao:hover{background:#FEE500}
+.share.x:hover{background:#0F1419;color:#fff}
+
+/* Referral tiers */
+.tier-block{margin-top:18px;padding:20px;background:var(--elevated);border-radius:14px;text-align:left}
+.tier-h{font-family:var(--display);font-size:19px;font-weight:700;color:var(--text-1);letter-spacing:-.005em;margin-bottom:14px;display:flex;align-items:baseline;gap:8px}
+.tier-h::before{content:'◆';color:var(--gold);font-size:13px;flex-shrink:0}
+.tier-h em{font-style:italic;color:var(--accent)}
+.tier-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tier{padding:14px;background:#fff;border:1px solid rgba(63,38,52,.08);border-radius:12px}
+.tier-n{font-family:var(--display);font-style:italic;font-size:22px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:8px}
+.tier-r{font-family:var(--sans);font-size:12px;color:var(--text-2);line-height:1.5}
+.tier-r b{color:var(--text-1);font-weight:800;display:block;font-size:13px;margin-bottom:2px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.success-icon{font-size:42px;color:var(--gold);margin-bottom:14px;line-height:1}
+.success-h{font-family:var(--display);font-size:30px;font-weight:700;line-height:1.18;margin-bottom:10px}
+.success-h em{color:var(--accent);font-style:italic}
+.success-sub{font-size:14px;color:var(--text-2);line-height:1.65;margin-bottom:24px}
+.success-sub b{color:var(--text-1);font-weight:700}
+.next-block{margin-top:18px;padding:20px;background:var(--elevated);border-radius:14px;text-align:left}
+.next-h{font-family:var(--display);font-size:19px;font-weight:700;color:var(--text-1);letter-spacing:-.005em;margin-bottom:12px;display:flex;align-items:baseline;gap:8px}
+.next-h::before{content:'◆';color:var(--gold);font-size:13px;flex-shrink:0}
+.next-h em{font-style:italic;color:var(--accent)}
+.next-list{font-size:13px;color:var(--text-2);line-height:1.7;list-style:none}
+.next-list li{padding-left:18px;position:relative}
+.next-list li::before{content:'◆';position:absolute;left:0;color:var(--gold);font-size:9px;top:6px}
+.next-list b{color:var(--text-1);font-weight:700}
+.next-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;padding:11px 22px;background:transparent;border:1.5px solid var(--accent);color:var(--accent);border-radius:999px;font-family:var(--sans);font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;transition:all .2s}
+.next-cta:hover{background:var(--accent);color:#fff}
+
+/* form hide once submitted */
+.card.hidden{display:none}
+
+</style>
+</head>
+<body>
+
+<main class="shell">
+  <a href="./v40-lp-wide.html" class="brand">LUCIVE<span class="dot"></span>NEXT-GEN CHARACTER CHAT</a>
+
+  <div class="card" id="formCard">
+    <div class="eye">コアテスター事前登録</div>
+    <h1 class="h">本編第1話 · <em>ひと足先に出会う</em></h1>
+    <p class="sub">アルファ開始日とコアテスターのご案内を、登録のメールアドレスへお送りします。</p>
+
+    <form class="form" id="signupForm" onsubmit="handleSubmit(event)">
+      <label class="label" for="email">メールアドレス</label>
+      <input type="email" id="email" class="input" placeholder="your@email.com" autocomplete="email" required>
+
+      <label class="check-row">
+        <input type="checkbox" id="consent" checked required>
+        <span>送信により<a href="./terms-ja.html" target="_blank">利用規約</a>・<a href="./privacy-ja.html" target="_blank">プライバシーポリシー</a>に同意したものとみなされます。</span>
+      </label>
+      <label class="check-row">
+        <input type="checkbox" id="marketing" checked>
+        <span>マーケティング配信に同意 (アルファ公開・本編第1話のお知らせ) · 任意</span>
+      </label>
+
+      <button type="submit" class="submit">事前登録 →</button>
+    </form>
+
+    <div class="foot">D-<span id="dday">17</span> アルファ公開 · 毎週新キャラクター</div>
+    <a href="./v40-lp-wide-ja.html" class="back-link">← トップへ戻る</a>
+  </div>
+
+  <!-- SUCCESS state -->
+  <div class="success" id="success">
+    <div style="margin:0 0 14px;padding:10px 14px;background:rgba(201,123,137,.12);border:1px solid rgba(201,123,137,.3);border-radius:10px;font-size:12px;color:#C97B89;text-align:center;line-height:1.5">
+      📬 ウェルカムメールをお送りしました。<b>迷惑メールフォルダもご確認ください。</b>
+    </div>
+    <div class="success-icon">✦</div>
+    <h2 class="success-h"><em>登録完了</em></h2>
+    <p class="success-sub"><b id="ssEmail">your@email.com</b><br> — アルファ公開と本編第1話のご案内をこちらにお送りします。</p>
+
+    <!-- Promo code + friend invite -->
+    <div class="promo-block">
+      <div class="promo-h">友達招待 · <em>双方に +100 Dive</em></div>
+      <div class="promo-row">
+        <div class="promo-row-label">コード</div>
+        <div class="promo-row-field">
+          <code id="myCode">LUCIVE·XXX000</code>
+          <button onclick="copyTo('myCode')">コピー</button>
+        </div>
+      </div>
+      <div class="promo-row">
+        <div class="promo-row-label">招待リンク</div>
+        <div class="promo-row-field">
+          <code id="myInvite">lucive.app/r/XXX000</code>
+          <button onclick="copyTo('myInvite')">コピー</button>
+        </div>
+      </div>
+      <div class="share-row">
+        <button class="share kakao" onclick="share('line')">📱 LINE</button>
+        <button class="share x" onclick="share('x')">𝕏 X</button>
+        <button class="share link" onclick="share('link')">🔗 リンク</button>
+      </div>
+    </div>
+
+    <!-- Top referral bonus -->
+    <div class="tier-block">
+      <div class="tier-h">リファラル順位 <em>ボーナス</em></div>
+      <div class="tier-grid">
+        <div class="tier"><div class="tier-n">1位</div><div class="tier-r"><b>永久無料</b>サービス継続期間中</div></div>
+        <div class="tier"><div class="tier-n">2-5位</div><div class="tier-r"><b>5ヶ月間無料</b>あなた + 招待した友達全員</div></div>
+      </div>
+    </div>
+
+    <!-- Next · Dive -->
+    <div class="next-block">
+      <div class="next-h">アンケート完了 <em>特典</em></div>
+      <ul class="next-list">
+        <li>2分のアンケートを完了 → <b>+500 Dive</b> 即時付与</li>
+        <li><b>コアテスター活動</b>でDive追加 + 特別特典のご案内</li>
+        <li>アルファ公開の優先案内 + 本編第1話のお知らせ</li>
+      </ul>
+      <a href="https://discord.gg/GgSBUzHTZ" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:10px;margin-bottom:6px;padding:10px 18px;background:#5865F2;color:#fff;border-radius:10px;font-size:13px;font-weight:700;text-decoration:none;">🎮 Discordコミュニティに参加</a>
+      <a href="./screening-ja.html" class="next-cta">アンケート開始 · Dive獲得 →</a>
+    </div>
+
+    <a href="./v40-lp-wide.html" class="back-link">← トップへ戻る</a>
+  </div>
+</main>
+
+<script>
+function genPromo(email){
+  const seed = email.toLowerCase().replace(/[^a-z0-9]/g,'');
+  let h = 0;
+  for(let i = 0; i < seed.length; i++){ h = ((h << 5) - h) + seed.charCodeAt(i); h |= 0; }
+  const letters = 'ABCDEFGHIJKLMNPQRSTUVWXYZ';
+  const a = letters[Math.abs(h) % 25];
+  const b = letters[Math.abs(h >> 5) % 25];
+  const c = letters[Math.abs(h >> 10) % 25];
+  const num = String(Math.abs(h >> 8) % 1000).padStart(3, '0');
+  return `${a}${b}${c}${num}`;
+}
+
+function handleSubmit(e){
+  e.preventDefault();
+  const email = document.getElementById('email').value.trim();
+  const consent = document.getElementById('consent').checked;
+  const marketing = document.getElementById('marketing').checked;
+  if(!email || !email.includes('@') || !consent) return;
+
+  const code = genPromo(email);
+  const promoCode = `LUCIVE·${code}`;
+  const inviteUrl = `https://lucive.app/r/${code}`;
+  const referralCode = new URLSearchParams(location.search).get('r') || '';
+
+  document.getElementById('ssEmail').textContent = email;
+  document.getElementById('myCode').textContent = promoCode;
+  document.getElementById('myInvite').textContent = `lucive.app/r/${code}`;
+
+  document.getElementById('formCard').classList.add('hidden');
+  const s = document.getElementById('success');
+  s.classList.add('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+
+  try{ localStorage.setItem('lucive_signup', JSON.stringify({email, code, ts: Date.now()})); }catch(_){}
+
+  // ── Klaviyo + GA4 + Zapier (background, non-blocking) ──
+  const I = window.LUCIVE_INTEGRATIONS;
+  if(I){
+    const props = {
+      promo_code: promoCode,
+      invite_url: inviteUrl,
+      referral_code: referralCode,
+      marketing_consent: !!marketing,
+      signup_source: 'v35-signup-ja',
+      signup_at: new Date().toISOString()
+    };
+    I.klaviyoSubscribe(email, props);
+    I.klaviyoTrack(email, 'Pre-registered', {
+      promo_code: promoCode,
+      referral_code: referralCode
+    });
+    I.gaEvent('sign_up', {
+      method: 'email',
+      has_referral: !!referralCode,
+      marketing_consent: !!marketing
+    });
+    I.zapierWebhook({
+      type: 'signup',
+      email: email,
+      promo_code: promoCode,
+      invite_url: inviteUrl,
+      referral_code: referralCode,
+      marketing_consent: !!marketing,
+      ts: new Date().toISOString()
+    });
+  }
+}
+
+function copyTo(id){
+  const el = document.getElementById(id);
+  const text = el.textContent;
+  navigator.clipboard?.writeText(text).then(()=>{
+    const orig = el.parentElement.querySelector('button').textContent;
+    el.parentElement.querySelector('button').textContent = 'Copied';
+    setTimeout(()=>{ el.parentElement.querySelector('button').textContent = orig; }, 1400);
+  });
+}
+
+function share(channel){
+  const code = document.getElementById('myCode').textContent;
+  const url = `https://lucive.app/r/${code.replace('LUCIVE·','')}`;
+  const text = `LUCIVE コアテスター事前登録 · 友達と一緒に登録すると双方に +100 Dive\n${url}`;
+  // GA4 + Klaviyo share tracking
+  const I = window.LUCIVE_INTEGRATIONS;
+  if(I){
+    I.gaEvent('share', { method: channel, content_type: 'invite_link' });
+    let signupEmail = '';
+    try{ signupEmail = (JSON.parse(localStorage.getItem('lucive_signup')||'{}').email)||''; }catch(_){}
+    if(signupEmail) I.klaviyoTrack(signupEmail, 'Share Clicked', { channel: channel });
+  }
+  if(channel === 'discord'){
+    window.open('https://line.me/R/share?text=' + encodeURIComponent(text), '_blank');
+  } else if(channel === 'link'){
+    navigator.clipboard?.writeText(url).then(()=>alert('リンクをコピーしました'));
+  } else if(channel === 'x'){
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
+  }
+}
+
+document.getElementById('dday').textContent = '17';
+</script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" role="img" aria-label="Talkie">
+  <defs>
+    <linearGradient id="tlk-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F472B6"/>
+      <stop offset="100%" stop-color="#BE185D"/>
+    </linearGradient>
+  </defs>
+  <rect width="56" height="56" rx="14" fill="url(#tlk-bg)"/>
+  <path d="M14 19 Q14 14 19 14 L37 14 Q42 14 42 19 L42 30 Q42 35 37 35 L27 35 L21 41 L22.5 35 Q14 35 14 30 Z" fill="#fff"/>
+  <circle cx="23" cy="24.5" r="2.2" fill="#BE185D"/>
+  <circle cx="33" cy="24.5" r="2.2" fill="#BE185D"/>
+</svg>
