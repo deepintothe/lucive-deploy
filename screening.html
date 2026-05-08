@@ -1150,6 +1150,7 @@ function submitSurvey() {
   I.zapierWebhook({
     type: 'survey_complete',
     email: email,
+    language: I.detectLang(),
     answers: answers,
     ts: new Date().toISOString()
   });

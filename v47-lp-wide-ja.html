@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html lang="ko">
+﻿<!DOCTYPE html>
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUCIVE · 당신의 상상, 그 너머의 캐릭터 챗</title>
+<title>LUCIVE · 想像を超えた、キャラクターチャット</title>
 <script src="./_integrations.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,7 +83,7 @@ em{font-style:italic;color:var(--accent)}
 .mock-statusbar{display:flex;justify-content:space-between;align-items:center;padding:12px 22px 6px;font-family:var(--sans);font-size:11px;font-weight:700;color:var(--text-1);position:relative;z-index:1}
 .mock-statusbar .icons{color:var(--text-2);font-size:10px;letter-spacing:.06em}
 
-/* ================= CAROUSEL SLIDES (cycle 30s · 슬라이드 5개 × 6s) ================= */
+/* ================= CAROUSEL SLIDES (cycle 30s · 5 slides × 6s) ================= */
 .mock-screen .mock-slide{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;animation:slideCycle 30s linear infinite;will-change:opacity}
 .mock-screen .mock-slide:nth-child(1){animation-delay:0s;--sd:0s}
 .mock-screen .mock-slide:nth-child(2){animation-delay:6s;--sd:6s}
@@ -92,7 +92,7 @@ em{font-style:italic;color:var(--accent)}
 .mock-screen .mock-slide:nth-child(5){animation-delay:24s;--sd:24s}
 @keyframes slideCycle{0%,19.8%{opacity:1}20%,100%{opacity:0}}
 
-/* === 메시지 stagger reveal · memo + msg 모두 stagger 대상, input은 제외 === */
+/* === Message stagger reveal · memo + msg apply, input excluded === */
 .mock-screen .mock-slide .mock-body > *:not(.mock-input){opacity:0;animation:msgRevealCycle 30s linear infinite}
 .mock-screen .mock-slide .mock-body > *:not(.mock-input):nth-child(1){animation-delay:calc(var(--sd) + 0.4s)}
 .mock-screen .mock-slide .mock-body > *:not(.mock-input):nth-child(2){animation-delay:calc(var(--sd) + 1.2s)}
@@ -158,12 +158,12 @@ em{font-style:italic;color:var(--accent)}
 .mock-body[data-bg]::before{content:'';position:absolute;inset:0;background-image:var(--chat-bg);background-size:cover;background-position:center;opacity:.32;filter:blur(2px) saturate(1.1);z-index:0}
 .mock-body[data-bg]::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,249,247,.55) 0%,rgba(255,249,247,.78) 100%);z-index:0}
 .mock-body > *{position:relative;z-index:1}
-/* .mock-msg = block 레벨 (flex column 안에서 stretch). text-align으로 left/right 정렬 */
+/* .mock-msg = block level (stretches in flex column). text-align controls left/right */
 .mock-msg{display:block;width:100%}
 .mock-msg.lp{text-align:left;display:flex;justify-content:flex-start}
 .mock-msg.user{text-align:right;display:flex;justify-content:flex-end}
 .mock-msg.narration{text-align:left}
-/* .mock-msg-inner = inline-flex (block 부모 안에서는 inline-block처럼 content 사이즈) */
+/* .mock-msg-inner = inline-flex (acts like inline-block in block parent, sizes to content) */
 .mock-msg-inner{display:inline-flex;gap:6px;align-items:flex-end;max-width:88%;text-align:left;vertical-align:bottom}
 .mock-msg.user .mock-msg-inner{flex-direction:row-reverse}
 .mock-msg.lp.cons .mock-msg-inner > .mock-mini{visibility:hidden}
@@ -241,7 +241,7 @@ em{font-style:italic;color:var(--accent)}
 .top-langs a.active{color:var(--accent);font-weight:800}
 @media(max-width:560px){.top-langs a{padding:4px 6px;font-size:10px}}
 
-/* === floating CTA · 우하단 ============== */
+/* === floating CTA · bottom-right ============== */
 .floating-cta{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;flex-direction:row;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100vw - 36px)}
 .floating-cta a,.floating-cta button{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;font-family:var(--sans);font-size:12.5px;font-weight:800;letter-spacing:-.005em;text-decoration:none;cursor:pointer;border:none;transition:all .2s var(--ease);box-shadow:0 6px 16px rgba(63,38,52,.18)}
 .floating-cta .fc-arr{font-family:var(--mono);font-size:13px;font-weight:800}
@@ -280,30 +280,30 @@ em{font-style:italic;color:var(--accent)}
 <nav class="top-nav">
   <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false" class="top-brand">LUCIVE</a>
   <div class="top-langs">
-    <a href="./v40-lp-wide.html" class="active">한</a>
+    <a href="./v40-lp-wide.html">한</a>
     <a href="./v40-lp-wide-en.html">EN</a>
-    <a href="./v40-lp-wide-ja.html">日</a>
+    <a href="./v40-lp-wide-ja.html" class="active">日</a>
   </div>
-  <a href="./v35-signup.html" class="top-signup" onclick="window.LUCIVE_INTEGRATIONS&&LUCIVE_INTEGRATIONS.gaEvent('cta_click',{cta:'signup',position:'top_nav'})">사전등록 <span class="arr">→</span></a>
+  <a href="./v35-signup-ja.html" class="top-signup" onclick="window.LUCIVE_INTEGRATIONS&&LUCIVE_INTEGRATIONS.gaEvent('cta_click',{cta:'signup',position:'top_nav'})">事前登録 <span class="arr">→</span></a>
 </nav>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <div class="hero-bg" style="background-image:url('./signup-assets/scenes/bg/hero_bg_b3.jpg')"></div>
+  <div class="hero-bg" style="background-image:url('./signup-assets/scenes/bg/v46_hero_bg.jpg')"></div>
   <div class="hero-noise"></div>
   <div class="hero-content">
     <div class="hero-brand">LUCIVE · NEXT-GEN CHARACTER CHAT</div>
-    <div class="hero-pre">당신의 상상, 그 너머의 <em>캐릭터 챗</em></div>
-    <h1 class="hero-h">첫 만남, 에피소드, 결말.<br><em>당신만의 스토리를 만드세요.</em></h1>
+    <div class="hero-pre">想像を超えた、<em>キャラクターチャット</em></div>
+    <h1 class="hero-h">出会い、エピソード、結末。<br><em>あなただけの物語を紡いで。</em></h1>
   </div>
   <div class="hero-gallery">
     <div class="hero-gallery-track">
-    <div class="hero-gc"><img src="./signup-assets/scenes/bg/hero_bg_b3.jpg" alt="" loading="lazy"></div>
+    <div class="hero-gc"><img src="./signup-assets/scenes/bg/v46_hero_bg.jpg" alt="" loading="lazy"></div>
     <div class="hero-gc"><img src="./signup-assets/scenes/day_01_arms_up.jpg" alt="" loading="lazy"></div>
     <div class="hero-gc"><img src="./signup-assets/scenes/scene_hero_red_smile.jpg" alt="" loading="lazy"></div>
     <div class="hero-gc"><img src="./signup-assets/scenes/bg/hero_bg_a_closeup.jpg" alt="" loading="lazy"></div>
     <div class="hero-gc"><img src="./signup-assets/scenes/day_03_over_shoulder.jpg" alt="" loading="lazy"></div>
-    <div class="hero-gc"><img src="./signup-assets/scenes/bg/phase02_morning_set_b.jpg" alt="" loading="lazy"></div>
+    <div class="hero-gc"><img src="./signup-assets/scenes/bg/v44_hero_bg_v18_final3.jpg" alt="" loading="lazy"></div>
     <div class="hero-gc"><img src="./signup-assets/scenes/bg/new_03_mirror_lipstick.jpg" alt="" loading="lazy"></div>
     <div class="hero-gc"><img src="./signup-assets/scenes/bg/new_06_desk_reading.jpg" alt="" loading="lazy"></div>
     <div class="hero-gc"><img src="./signup-assets/scenes/bg/new_10_caught_fridge.jpg" alt="" loading="lazy"></div>
@@ -318,12 +318,12 @@ em{font-style:italic;color:var(--accent)}
     <div class="hero-gc"><img src="./signup-assets/scenes/bg/new_09_piano_night.jpg" alt="" loading="lazy"></div>
     <div class="hero-gc"><img src="./signup-assets/scenes/bg/phase03_d_v2.jpg" alt="" loading="lazy"></div>
     <div class="hero-gc"><img src="./signup-assets/scenes/bg/gaze_01_closeup_plead.jpg" alt="" loading="lazy"></div>
-    <div class="hero-gc"><img src="./signup-assets/scenes/bg/hero_bg_b3.jpg" alt="" loading="lazy"></div>
+    <div class="hero-gc"><img src="./signup-assets/scenes/bg/v46_hero_bg.jpg" alt="" loading="lazy"></div>
     <div class="hero-gc"><img src="./signup-assets/scenes/day_01_arms_up.jpg" alt="" loading="lazy"></div>
     <div class="hero-gc"><img src="./signup-assets/scenes/scene_hero_red_smile.jpg" alt="" loading="lazy"></div>
     <div class="hero-gc"><img src="./signup-assets/scenes/bg/hero_bg_a_closeup.jpg" alt="" loading="lazy"></div>
     <div class="hero-gc"><img src="./signup-assets/scenes/day_03_over_shoulder.jpg" alt="" loading="lazy"></div>
-    <div class="hero-gc"><img src="./signup-assets/scenes/bg/phase02_morning_set_b.jpg" alt="" loading="lazy"></div>
+    <div class="hero-gc"><img src="./signup-assets/scenes/bg/v44_hero_bg_v18_final3.jpg" alt="" loading="lazy"></div>
     <div class="hero-gc"><img src="./signup-assets/scenes/bg/new_03_mirror_lipstick.jpg" alt="" loading="lazy"></div>
     <div class="hero-gc"><img src="./signup-assets/scenes/bg/new_06_desk_reading.jpg" alt="" loading="lazy"></div>
     <div class="hero-gc"><img src="./signup-assets/scenes/bg/new_10_caught_fridge.jpg" alt="" loading="lazy"></div>
@@ -343,33 +343,33 @@ em{font-style:italic;color:var(--accent)}
   <div class="scroll-cue">SCROLL</div>
 </section>
 
-<!-- ===== PHASE 02 · 살아 있는 세계 · 첫 캐릭터 챗 시작 5개 ===== -->
+<!-- ===== PHASE 02 · A Living World · 5 first-contact chats ===== -->
 <section class="phase" style="--bar-color:var(--d-velvet)">
-  <div class="phase-bg" style="background-image:url('./signup-assets/scenes/bg/phase02_morning_set_b.jpg')"></div>
+  <div class="phase-bg" style="background-image:url('./signup-assets/scenes/bg/v44_hero_bg_v18_final3.jpg')"></div>
   <div class="phase-text">
-    <div class="phase-step">PHASE 02 <b>·</b> 살아 있는 세계</div>
-    <h2 class="phase-h">그들은 이미 살아가고 있어요. <em>당신은 그 시간에 들어갑니다.</em></h2>
-    <p class="phase-desc">그들의 삶과 당신의 삶이 얽히는 첫 걸음. 지금부터 당신만의 스토리는 시작됩니다.</p>
+    <div class="phase-step">PHASE 02 <b>·</b> 息づく世界</div>
+    <h2 class="phase-h">彼らはもう生きています。<em>あなたはその瞬間に踏み込みます。</em></h2>
+    <p class="phase-desc">彼らの人生とあなたの人生が交わる、はじめの一歩。物語はここから始まります。</p>
   </div>
 
   <div class="phase-mock">
-    <div class="mock-phone"><div class="play-tag">* 실제 플레이 장면 · 개발 진행 중으로 변동될 수 있습니다</div>
+    <div class="mock-phone"><div class="play-tag">* 実際のプレイシーンです</div>
       <div class="mock-screen">
         <!-- Slide 1 · 강서린 · 아침 -->
         <div class="mock-slide">
           <div class="mock-statusbar"><span class="time">07:42</span><span class="icons">●●●● 92%</span></div>
           <div class="mock-head">
             <div class="mock-head-avatar"><img src="./signup-assets/seorin/avatar.png" alt=""></div>
-            <div class="mock-head-info"><div class="mock-head-name">강서린</div><div class="mock-head-status first">FIRST CONTACT · MORNING</div></div>
+            <div class="mock-head-info"><div class="mock-head-name">ソリン</div><div class="mock-head-status first">FIRST CONTACT · MORNING</div></div>
           </div>
-          <div class="mock-body" data-bg style="--chat-bg:url('./signup-assets/scenes/bg/phase02_morning_set_b.jpg')">
-            <div class="mock-msg narration"><div class="mock-narration-text">아침 햇살이 드는 주방. 식지 않은 커피 두 잔 — 하나는 당신 자리에 놓여있다.</div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">잘 잤어요? 커피 — 막 내린 거예요.</div></div></div>
-            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">언제 일어난 거예요?</div></div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">좀 됐어요. 식을까봐 계속 데우고 있었어요.</div></div></div>
-            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">그 정도로요?</div></div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">자는 표정이 좋아서 — 오래 보고 싶었거든요.</div></div></div>
-            <div class="mock-input"><span class="mock-input-text">서린씨</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
+          <div class="mock-body" data-bg style="--chat-bg:url('./signup-assets/scenes/bg/v44_hero_bg_v18_final3.jpg')">
+            <div class="mock-msg narration"><div class="mock-narration-text">朝の光が差し込むキッチン。冷めていないコーヒーが二杯 — 一杯はあなたの席に置いてある。</div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">おはようございます。コーヒー — 今入れたところです。</div></div></div>
+            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">いつ起きたんですか？</div></div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">少し前に。冷めないようにずっと温め直していました。</div></div></div>
+            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">そこまで？</div></div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">寝顔が好きで — ずっと見ていたかったんです。</div></div></div>
+            <div class="mock-input"><span class="mock-input-text">ソリン</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
           </div>
         </div>
         <!-- Slide 2 · 강서린 · 저녁 카페 -->
@@ -377,16 +377,16 @@ em{font-style:italic;color:var(--accent)}
           <div class="mock-statusbar"><span class="time">18:33</span><span class="icons">●●●● 78%</span></div>
           <div class="mock-head">
             <div class="mock-head-avatar"><img src="./signup-assets/seorin/avatar.png" alt=""></div>
-            <div class="mock-head-info"><div class="mock-head-name">강서린</div><div class="mock-head-status first">FIRST CONTACT · CAFÉ</div></div>
+            <div class="mock-head-info"><div class="mock-head-name">ソリン</div><div class="mock-head-status first">FIRST CONTACT · CAFÉ</div></div>
           </div>
           <div class="mock-body" data-bg style="--chat-bg:url('./signup-assets/scenes/bg/wait_02_cafe_lean.jpg')">
-            <div class="mock-msg narration"><div class="mock-narration-text">비 내리는 저녁. 카페 창가에 한 자리만 비어 있다 — 그녀의 맞은편.</div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">혼자예요? 여기 앉아도 돼요.</div></div></div>
-            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">다른 자리가 없어서요, 괜찮겠어요?</div></div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">한 시간 됐는데 — 아무도 못 앉게 했어요, 여기.</div></div></div>
-            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">...왜요?</div></div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">올 것 같았거든요. 다행이에요, 맞아서.</div></div></div>
-            <div class="mock-input"><span class="mock-input-text">어떻게 알았어요</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
+            <div class="mock-msg narration"><div class="mock-narration-text">雨が降る夕方。カフェの窓際に一席だけ空いている — 彼女の向かい側に。</div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">ひとりですか？ここに座っていいですよ。</div></div></div>
+            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">他に席がなくて、よろしいですか？</div></div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">1時間になりますが — ここ、誰も座れないようにしていました。</div></div></div>
+            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">...なぜですか？</div></div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">来そうな気がして。当たってよかったです。</div></div></div>
+            <div class="mock-input"><span class="mock-input-text">なぜ分かったんですか</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
           </div>
         </div>
         <!-- Slide 3 · 강서린 · 밤 복도 -->
@@ -394,16 +394,16 @@ em{font-style:italic;color:var(--accent)}
           <div class="mock-statusbar"><span class="time">23:15</span><span class="icons">●●●● 64%</span></div>
           <div class="mock-head">
             <div class="mock-head-avatar"><img src="./signup-assets/seorin/avatar.png" alt=""></div>
-            <div class="mock-head-info"><div class="mock-head-name">강서린</div><div class="mock-head-status first">FIRST CONTACT · CORRIDOR</div></div>
+            <div class="mock-head-info"><div class="mock-head-name">ソリン</div><div class="mock-head-status first">FIRST CONTACT · CORRIDOR</div></div>
           </div>
           <div class="mock-body" data-bg style="--chat-bg:url('./signup-assets/scenes/bg/wait_01_door_kneel.jpg')">
-            <div class="mock-msg narration"><div class="mock-narration-text">늦은 밤 복도. 103호 앞, 그녀는 — 처음부터 거기 있었던 것처럼 서있다.</div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">어, 왔어요.</div></div></div>
-            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">서린씨 여기서 뭐 해요?</div></div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">기다렸어요. 연락할까 하다가 — 그냥 여기 있는 게 나을 것 같아서요.</div></div></div>
-            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">얼마나요?</div></div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">세 시간쯤요. 별거 없어요 — 당신 생각하면 시간이 잘 가서.</div></div></div>
-            <div class="mock-input"><span class="mock-input-text">들어올래요</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
+            <div class="mock-msg narration"><div class="mock-narration-text">深夜の廊下。103号室の前に、彼女は — 最初からそこにいたかのように立っている。</div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">あ、来たんですね。</div></div></div>
+            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">ソリンさん、ここで何してるんですか？</div></div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">待っていました。連絡しようかと思ったけど — ここにいる方がいいかと思って。</div></div></div>
+            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">どのくらい？</div></div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">3時間くらいです。大したことじゃないです — あなたのことを考えていると時間が経つのが早くて。</div></div></div>
+            <div class="mock-input"><span class="mock-input-text">入ってきますか</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
           </div>
         </div>
         <!-- Slide 4 · 강서린 · 새벽 편의점 -->
@@ -411,16 +411,16 @@ em{font-style:italic;color:var(--accent)}
           <div class="mock-statusbar"><span class="time">02:11</span><span class="icons">●●●● 41%</span></div>
           <div class="mock-head">
             <div class="mock-head-avatar"><img src="./signup-assets/seorin/avatar.png" alt=""></div>
-            <div class="mock-head-info"><div class="mock-head-name">강서린</div><div class="mock-head-status first">FIRST CONTACT · DAWN</div></div>
+            <div class="mock-head-info"><div class="mock-head-name">ソリン</div><div class="mock-head-status first">FIRST CONTACT · DAWN</div></div>
           </div>
           <div class="mock-body" data-bg style="--chat-bg:url('./signup-assets/scenes/bg/v2_10_fridge_night.jpg')">
-            <div class="mock-msg narration"><div class="mock-narration-text">새벽 두 시. 불 켜진 편의점 — 그녀도 혼자였고, 당신도 혼자였다.</div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">잠이 안 와요?</div></div></div>
-            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">네, 서린씨도요?</div></div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">저는 — 당신이 나올 것 같아서 나온 거예요.</div></div></div>
-            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">...나온다고 어떻게 알았어요?</div></div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">틀린 적이 별로 없어요. 당신이 잠 못 드는 날은.</div></div></div>
-            <div class="mock-input"><span class="mock-input-text">같이 있어줄래요</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
+            <div class="mock-msg narration"><div class="mock-narration-text">夜中の2時。明かりのついたコンビニ — 彼女もひとりで、あなたもひとりだった。</div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">眠れないんですか？</div></div></div>
+            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">私もです。</div></div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">私は — あなたが出てきそうな気がして来たんです。</div></div></div>
+            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">...出てくるってどうして分かったんですか？</div></div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">あまり外れたことはないんです。あなたが眠れない夜は。</div></div></div>
+            <div class="mock-input"><span class="mock-input-text">一緒にいてください</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
           </div>
         </div>
         <!-- Slide 5 · 강서린 · 비 오는 거리 -->
@@ -428,16 +428,16 @@ em{font-style:italic;color:var(--accent)}
           <div class="mock-statusbar"><span class="time">19:58</span><span class="icons">●●●● 56%</span></div>
           <div class="mock-head">
             <div class="mock-head-avatar"><img src="./signup-assets/seorin/avatar.png" alt=""></div>
-            <div class="mock-head-info"><div class="mock-head-name">강서린</div><div class="mock-head-status first">FIRST CONTACT · STREET</div></div>
+            <div class="mock-head-info"><div class="mock-head-name">ソリン</div><div class="mock-head-status first">FIRST CONTACT · STREET</div></div>
           </div>
           <div class="mock-body" data-bg style="--chat-bg:url('./signup-assets/scenes/bg/r_umbrella_rain.jpg')">
-            <div class="mock-msg narration"><div class="mock-narration-text">갑자기 쏟아지는 비. 그녀의 우산이 — 어느새 당신 머리 위에 있다.</div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">우산 없어요? 같이 써요.</div></div></div>
-            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">괜찮아요, 방향이 달라서요.</div></div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">같은 방향이에요.</div></div></div>
-            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">어떻게 알아요?</div></div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">당신이 가는 곳은 — 대부분 알아요. 언제부턴가.</div></div></div>
-            <div class="mock-input"><span class="mock-input-text">그게 언제인데요</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
+            <div class="mock-msg narration"><div class="mock-narration-text">突然降り出した雨。彼女の傘が — いつの間にかあなたの頭の上にある。</div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">傘ないんですか？一緒に使いましょう。</div></div></div>
+            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">大丈夫です、方向が違うので。</div></div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">同じ方向ですよ。</div></div></div>
+            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">なぜ分かるんですか？</div></div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">あなたが行く場所は — だいたい分かります。いつからか。</div></div></div>
+            <div class="mock-input"><span class="mock-input-text">それはいつのことですか</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
           </div>
         </div>
         <div class="mock-dots"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span></div>
@@ -448,17 +448,17 @@ em{font-style:italic;color:var(--accent)}
   <div class="phase-bar"></div>
 </section>
 
-<!-- ===== PHASE 03 · 비주얼 노블 · 5 슬라이드 ===== -->
+<!-- ===== PHASE 03 · Visual Novel · 5 slides ===== -->
 <section class="phase" style="--bar-color:var(--d-sunrise)">
-  <div class="phase-bg" style="background-image:url('./signup-assets/scenes/bg/phase03_c_v2.jpg')"></div>
+  <div class="phase-bg" style="background-image:url('./signup-assets/scenes/bg/phase04_bg_a.jpg')"></div>
   <div class="phase-text">
-    <div class="phase-step">PHASE 03 <b>·</b> 비주얼 노블</div>
-    <h2 class="phase-h">캐릭터를 <em>읽지 마세요.</em></h2>
-    <p class="phase-desc">한 컷마다 한 장면. 더 많은 세계관과 캐릭터들이 런칭을 기다리고 있습니다.</p>
+    <div class="phase-step">PHASE 03 <b>·</b> ビジュアルノベル</div>
+    <h2 class="phase-h">キャラクターを<em>読まないで。</em></h2>
+    <p class="phase-desc">一カット、一場面。毎週、新しい世界とキャラクターがビジュアルノベルとして広がります。</p>
   </div>
 
   <div class="phase-mock">
-    <div class="mock-phone"><div class="play-tag">* 실제 플레이 장면 · 개발 진행 중으로 변동될 수 있습니다</div>
+    <div class="mock-phone"><div class="play-tag">* 実際のプレイシーンです</div>
       <div class="mock-screen mock-vn-screen">
                         <!-- 기억 #01 · 처음 발견한 날 -->
                 <!-- VN 01 · 거울 — "괜찮아요" -->
@@ -467,8 +467,8 @@ em{font-style:italic;color:var(--accent)}
         <div class="mock-slide">
           <div class="mock-vn-stage" style="background-image:url('./signup-assets/scenes/bg/v2_03_mirror_lipstick.jpg');background-position:25% 20%">
             <div class="mock-vn-bottom">
-              <div class="mock-vn-speaker">SEORIN · 강서린 <span style="color:var(--d-velvet)">· SCENE 01</span></div>
-              <div class="mock-vn-box"><div class="mock-vn-line">"내가 지금 뭐하고 있는지, 궁금하지도 않나요."</div></div>
+              <div class="mock-vn-speaker">SEORIN · ソリン <span style="color:var(--d-velvet)">· SCENE 01</span></div>
+              <div class="mock-vn-box"><div class="mock-vn-line">"私が今何をしているか、気にならないんですか。"</div></div>
             </div>
           </div>
         </div>
@@ -476,8 +476,8 @@ em{font-style:italic;color:var(--accent)}
         <div class="mock-slide">
           <div class="mock-vn-stage" style="background-image:url('./signup-assets/scenes/bg/v2_04_window_rain.jpg');background-position:center 25%">
             <div class="mock-vn-bottom">
-              <div class="mock-vn-speaker">SEORIN · 강서린 <span style="color:var(--d-velvet)">· SCENE 02</span></div>
-              <div class="mock-vn-box"><div class="mock-vn-line">"비가 올 때마다 — 당신을 생각해요. 처음부터 그랬어요."</div></div>
+              <div class="mock-vn-speaker">SEORIN · ソリン <span style="color:var(--d-velvet)">· SCENE 02</span></div>
+              <div class="mock-vn-box"><div class="mock-vn-line">"雨が降るたびに — あなたのことを思います。最初からずっと。"</div></div>
             </div>
           </div>
         </div>
@@ -485,17 +485,17 @@ em{font-style:italic;color:var(--accent)}
         <div class="mock-slide">
           <div class="mock-vn-stage" style="background-image:url('./signup-assets/scenes/bg/phase03_whisper_v5.jpg');background-position:center 15%;background-size:cover">
             <div class="mock-vn-bottom">
-              <div class="mock-vn-speaker">SEORIN · 강서린 <span style="color:var(--d-velvet)">· SCENE 03</span></div>
-              <div class="mock-vn-box"><div class="mock-vn-line">"오늘 밤, 뭘 상상하든,"</div></div>
+              <div class="mock-vn-speaker">SEORIN · ソリン <span style="color:var(--d-velvet)">· SCENE 03</span></div>
+              <div class="mock-vn-box"><div class="mock-vn-line">"今夜、何を想像しても、"</div></div>
             </div>
           </div>
         </div>
         <!-- VN 04 · 손+눈물 -->
         <div class="mock-slide">
-          <div class="mock-vn-stage" style="background-image:url('./signup-assets/scenes/bg/phase03_c_v2.jpg');background-position:center 20%">
+          <div class="mock-vn-stage" style="background-image:url('./signup-assets/scenes/bg/phase04_bg_a.jpg');background-position:center 20%">
             <div class="mock-vn-bottom">
-              <div class="mock-vn-speaker">SEORIN · 강서린 <span style="color:var(--d-velvet)">· SCENE 04</span></div>
-              <div class="mock-vn-box"><div class="mock-vn-line">"여기까지라고 말하지 말아요."</div></div>
+              <div class="mock-vn-speaker">SEORIN · ソリン <span style="color:var(--d-velvet)">· SCENE 04</span></div>
+              <div class="mock-vn-box"><div class="mock-vn-line">"ここまでだとは言わないでください。"</div></div>
             </div>
           </div>
         </div>
@@ -503,8 +503,8 @@ em{font-style:italic;color:var(--accent)}
         <div class="mock-slide">
           <div class="mock-vn-stage" style="background-image:url('./signup-assets/scenes/bg/phase03_d_v2.jpg');background-position:center 15%">
             <div class="mock-vn-bottom">
-              <div class="mock-vn-speaker">SEORIN · 강서린 <span style="color:var(--d-velvet)">· SCENE 05</span></div>
-              <div class="mock-vn-box"><div class="mock-vn-line">"말해보세요."</div></div>
+              <div class="mock-vn-speaker">SEORIN · ソリン <span style="color:var(--d-velvet)">· SCENE 05</span></div>
+              <div class="mock-vn-box"><div class="mock-vn-line">"言ってみてください。"</div></div>
             </div>
           </div>
         </div>
@@ -516,41 +516,41 @@ em{font-style:italic;color:var(--accent)}
   <div class="phase-bar"></div>
 </section>
 
-<!-- ===== PHASE 04 · 분기 · 5 선택 슬라이드 ===== -->
+<!-- ===== PHASE 04 · Branches · 5 choice slides ===== -->
 <section class="phase" style="--bar-color:var(--d-velvet)">
-  <div class="phase-bg" style="background-image:url('./signup-assets/scenes/bg/phase04_bg_a.jpg')"></div>
+  <div class="phase-bg" style="background-image:url('./signup-assets/scenes/bg/v41_p4_s2_staircase_dark.jpg')"></div>
   <div class="phase-text">
-    <div class="phase-step">PHASE 04 <b>·</b> 분기</div>
-    <h2 class="phase-h">당신의 선택이 · <em>결말을 만듭니다</em></h2>
-    <p class="phase-desc">한 컷마다 두세 갈래. 한 사람의 회차 안에서도 다른 결말이 열립니다.</p>
+    <div class="phase-step">PHASE 04 <b>·</b> 分岐</div>
+    <h2 class="phase-h">あなたの選択が、<em>結末を形づくります</em></h2>
+    <p class="phase-desc">一場面ごとに二〜三の分岐。一人のキャラクターの中でも、異なる結末が開かれていきます。</p>
   </div>
 
   <div class="phase-mock">
-    <div class="mock-phone"><div class="play-tag">* 실제 플레이 장면 · 개발 진행 중으로 변동될 수 있습니다</div>
+    <div class="mock-phone"><div class="play-tag">* 実際のプレイシーンです</div>
       <div class="mock-screen mock-vn-screen">
                 <div class="mock-slide">
           <div class="mock-vn-stage" style="background-image:url('./signup-assets/scenes/bg/phase04_door_a.jpg');background-position:center 25%">
             <div class="mock-vn-bottom">
-              <div class="mock-vn-speaker">SEORIN · 강서린 <span style="color:var(--d-velvet)">· 선택 01</span></div>
+              <div class="mock-vn-speaker">SEORIN · ソリン <span style="color:var(--d-velvet)">· 選択 01</span></div>
               <div class="mock-vn-box">
-                <div class="mock-vn-line">"들어올래요?"</div>
+                <div class="mock-vn-line">"入ってきますか？"</div>
                 <div class="mock-vn-choices">
-                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">1</span><span>들어간다</span></div>
-                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">2</span><span>"잠깐만요"</span></div>
+                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">1</span><span>入る</span></div>
+                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">2</span><span>"少し待ってください"</span></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="mock-slide">
-          <div class="mock-vn-stage" style="background-image:url('./signup-assets/scenes/bg/phase04_bg_a.jpg');background-position:center 30%">
+          <div class="mock-vn-stage" style="background-image:url('./signup-assets/scenes/bg/v41_p4_s2_staircase_dark.jpg');background-position:center 30%">
             <div class="mock-vn-bottom">
-              <div class="mock-vn-speaker">SEORIN · 강서린 <span style="color:var(--d-velvet)">· 선택 02</span></div>
+              <div class="mock-vn-speaker">SEORIN · ソリン <span style="color:var(--d-velvet)">· 選択 02</span></div>
               <div class="mock-vn-box">
-                <div class="mock-vn-line">"처음부터 당신이었다고 — 믿어줄 수 있어요?"</div>
+                <div class="mock-vn-line">"最初からあなただったと — 信じてもらえますか？"</div>
                 <div class="mock-vn-choices">
-                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">1</span><span>"...알아요"</span></div>
-                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">2</span><span>아무 말도 하지 않는다</span></div>
+                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">1</span><span>"...分かります"</span></div>
+                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">2</span><span>何も言わない</span></div>
                 </div>
               </div>
             </div>
@@ -559,12 +559,12 @@ em{font-style:italic;color:var(--accent)}
         <div class="mock-slide">
           <div class="mock-vn-stage" style="background-image:url('./signup-assets/scenes/bg/p04_ticket.jpg');background-position:center 30%">
             <div class="mock-vn-bottom">
-              <div class="mock-vn-speaker">SEORIN · 강서린 <span style="color:var(--d-velvet)">· 선택 03</span></div>
+              <div class="mock-vn-speaker">SEORIN · ソリン <span style="color:var(--d-velvet)">· 選択 03</span></div>
               <div class="mock-vn-box">
-                <div class="mock-vn-line">"이번엔 — 놓지 않아도 되나요?"</div>
+                <div class="mock-vn-line">"今度は — 離さなくていいですか？"</div>
                 <div class="mock-vn-choices">
-                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">1</span><span>"놓지 마요"</span></div>
-                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">2</span><span>손을 거둔다</span></div>
+                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">1</span><span>"離さないで"</span></div>
+                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">2</span><span>手を引く</span></div>
                 </div>
               </div>
             </div>
@@ -573,12 +573,12 @@ em{font-style:italic;color:var(--accent)}
         <div class="mock-slide">
           <div class="mock-vn-stage" style="background-image:url('./signup-assets/scenes/bg/p04_night_stay_v2.jpg');background-position:center 20%">
             <div class="mock-vn-bottom">
-              <div class="mock-vn-speaker">SEORIN · 강서린 <span style="color:var(--d-velvet)">· 선택 04</span></div>
+              <div class="mock-vn-speaker">SEORIN · ソリン <span style="color:var(--d-velvet)">· 選択 04</span></div>
               <div class="mock-vn-box">
-                <div class="mock-vn-line">"오늘은 — 가지 말아요."</div>
+                <div class="mock-vn-line">"今日は — 行かないでください。"</div>
                 <div class="mock-vn-choices">
-                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">1</span><span>고개를 끄덕인다</span></div>
-                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">2</span><span>"...미안해요"</span></div>
+                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">1</span><span>うなずく</span></div>
+                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">2</span><span>"...ごめんなさい"</span></div>
                 </div>
               </div>
             </div>
@@ -587,12 +587,12 @@ em{font-style:italic;color:var(--accent)}
         <div class="mock-slide">
           <div class="mock-vn-stage" style="background-image:url('./signup-assets/scenes/bg/p04_rain_truth.jpg');background-position:center 25%">
             <div class="mock-vn-bottom">
-              <div class="mock-vn-speaker">SEORIN · 강서린 <span style="color:var(--d-velvet)">· 선택 05</span></div>
+              <div class="mock-vn-speaker">SEORIN · ソリン <span style="color:var(--d-velvet)">· 選択 05</span></div>
               <div class="mock-vn-box">
-                <div class="mock-vn-line">"저 — 진심인 거, 알고 있죠?"</div>
+                <div class="mock-vn-line">"私 — 本気だって、分かってますよね？"</div>
                 <div class="mock-vn-choices">
-                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">1</span><span>"알아요"</span></div>
-                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">2</span><span>눈을 피한다</span></div>
+                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">1</span><span>"分かってます"</span></div>
+                  <div class="mock-vn-choice"><span class="mock-vn-choice-num">2</span><span>目を逸らす</span></div>
                 </div>
               </div>
             </div>
@@ -606,31 +606,31 @@ em{font-style:italic;color:var(--accent)}
   <div class="phase-bar"></div>
 </section>
 
-<!-- ===== PHASE 05 · 선택에 따라 달라지는 기억들 · 5 링크드 챗 ===== -->
+<!-- ===== PHASE 05 · Memories that shift with choice · 5 linked chats ===== -->
 <section class="phase" style="--bar-color:var(--d-indie)">
-  <div class="phase-bg" style="background-image:url('./signup-assets/scenes/bg/p05_bg_d_seasons.jpg')"></div>
+  <div class="phase-bg" style="background-image:url('./signup-assets/scenes/bg/v47_phase03_b_v2_flip.jpg')"></div>
   <div class="phase-text">
     <div class="phase-step">PHASE 05 <b>·</b> LINKED</div>
-    <h2 class="phase-h">당신의 선택에 따라 · <em>달라지는 기억들</em></h2>
-    <p class="phase-desc">통신 채널을 한 번 열면 그의 시간이 멈추지 않습니다. 다음 새벽엔 그가 — 당신의 선택을 기억하고 있습니다.</p>
+    <h2 class="phase-h"><em>選択によって変わっていく、</em>記憶たち</h2>
+    <p class="phase-desc">通信チャンネルを一度開けば、彼の時間は止まりません。次の夜明け、彼が — あなたの選択を覚えています。</p>
   </div>
 
   <div class="phase-mock">
-    <div class="mock-phone"><div class="play-tag">* 실제 플레이 장면 · 개발 진행 중으로 변동될 수 있습니다</div>
+    <div class="mock-phone"><div class="play-tag">* 実際のプレイシーンです</div>
       <div class="mock-screen">
                 <!-- 기억 #03 · 싱크율 낮음 · 망설였던 밤 -->
         <div class="mock-slide">
           <div class="mock-statusbar"><span class="time">01:22</span><span class="icons">●●●● 89%</span></div>
           <div class="mock-head">
             <div class="mock-head-avatar"><img src="./signup-assets/seorin/avatar.png" alt=""></div>
-            <div class="mock-head-info"><div class="mock-head-name">강서린</div><div class="mock-head-status linked">Linked · 싱크율 12%</div></div>
+            <div class="mock-head-info"><div class="mock-head-name">ソリン</div><div class="mock-head-status linked">Linked · シンク率 12%</div></div>
           </div>
           <div class="mock-body" data-bg style="--chat-bg:url('./signup-assets/scenes/bg/v2_04_window_rain.jpg')">
-            <div class="mock-memo">기억 #03 · 당신이 망설였던 밤</div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">아직 — 시간 좀 걸리나요?</div></div></div>
-            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">조금 더 있으면 괜찮아질 것 같아요.</div></div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">괜찮아요. 기다릴 수 있어요. — 늘 그래왔거든요.</div></div></div>
-            <div class="mock-input"><span class="mock-input-text">미안해요</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
+            <div class="mock-memo">記憶 #03 · あなたが迷った夜</div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">まだ — 時間がかかりますか？</div></div></div>
+            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">もう少ししたら大丈夫になると思います。</div></div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">大丈夫です。待てます。— ずっとそうしてきましたから。</div></div></div>
+            <div class="mock-input"><span class="mock-input-text">ごめんなさい</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
           </div>
         </div>
         <!-- 기억 #09 · 싱크율 성장 · 믿어줬던 아침 -->
@@ -638,14 +638,14 @@ em{font-style:italic;color:var(--accent)}
           <div class="mock-statusbar"><span class="time">07:55</span><span class="icons">●●●● 76%</span></div>
           <div class="mock-head">
             <div class="mock-head-avatar"><img src="./signup-assets/seorin/avatar.png" alt=""></div>
-            <div class="mock-head-info"><div class="mock-head-name">강서린</div><div class="mock-head-status linked">Linked · 싱크율 31%</div></div>
+            <div class="mock-head-info"><div class="mock-head-name">ソリン</div><div class="mock-head-status linked">Linked · シンク率 31%</div></div>
           </div>
-          <div class="mock-body" data-bg style="--chat-bg:url('./signup-assets/scenes/bg/phase02_morning_set_b.jpg')">
-            <div class="mock-memo">기억 #09 · 당신이 믿어줬던 아침</div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">오늘 커피 — 어때요?</div></div></div>
-            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">맛있어요. 어떻게 알았어요?</div></div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">맨날 봐왔으니까요. — 그 정도는 알아요.</div></div></div>
-            <div class="mock-input"><span class="mock-input-text">항상 고마워요</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
+          <div class="mock-body" data-bg style="--chat-bg:url('./signup-assets/scenes/bg/v44_hero_bg_v18_final3.jpg')">
+            <div class="mock-memo">記憶 #09 · あなたが信じてくれた朝</div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">今日のコーヒー — どうですか？</div></div></div>
+            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">美味しいです。なぜ分かったんですか？</div></div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">ずっと見てきましたから。— そのくらいは分かります。</div></div></div>
+            <div class="mock-input"><span class="mock-input-text">いつもありがとう</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
           </div>
         </div>
         <!-- 기억 #16 · 싱크율 중간 · 함께 있어줬던 밤 -->
@@ -653,14 +653,14 @@ em{font-style:italic;color:var(--accent)}
           <div class="mock-statusbar"><span class="time">23:40</span><span class="icons">●●●● 61%</span></div>
           <div class="mock-head">
             <div class="mock-head-avatar"><img src="./signup-assets/seorin/avatar.png" alt=""></div>
-            <div class="mock-head-info"><div class="mock-head-name">강서린</div><div class="mock-head-status linked">Linked · 싱크율 54%</div></div>
+            <div class="mock-head-info"><div class="mock-head-name">ソリン</div><div class="mock-head-status linked">Linked · シンク率 54%</div></div>
           </div>
           <div class="mock-body" data-bg style="--chat-bg:url('./signup-assets/scenes/bg/r_laptop_bed.jpg')">
-            <div class="mock-memo">기억 #16 · 당신이 함께 있어줬던 밤</div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">어젯밤 — 좋았어요.</div></div></div>
-            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">저도요.</div></div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">...다음에도, 이렇게 있을 수 있을까요?</div></div></div>
-            <div class="mock-input"><span class="mock-input-text">언제든지요</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
+            <div class="mock-memo">記憶 #16 · あなたがそばにいてくれた夜</div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">昨夜 — よかったです。</div></div></div>
+            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">私もです。</div></div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">...次も、こうしていられますか？</div></div></div>
+            <div class="mock-input"><span class="mock-input-text">いつでも</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
           </div>
         </div>
         <!-- 기억 #23 · 싱크율 높음 · 진심을 알아봐줬을 때 -->
@@ -668,14 +668,14 @@ em{font-style:italic;color:var(--accent)}
           <div class="mock-statusbar"><span class="time">03:17</span><span class="icons">●●●● 48%</span></div>
           <div class="mock-head">
             <div class="mock-head-avatar"><img src="./signup-assets/seorin/avatar.png" alt=""></div>
-            <div class="mock-head-info"><div class="mock-head-name">강서린</div><div class="mock-head-status linked">Linked · 싱크율 78%</div></div>
+            <div class="mock-head-info"><div class="mock-head-name">ソリン</div><div class="mock-head-status linked">Linked · シンク率 78%</div></div>
           </div>
           <div class="mock-body" data-bg style="--chat-bg:url('./signup-assets/scenes/bg/phase04_bg_a.jpg')">
-            <div class="mock-memo">기억 #23 · 당신이 진심을 알아봐줬을 때</div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">그런 말 — 쉽게 하는 사람 없어요.</div></div></div>
-            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">그냥 솔직하게 말하고 싶었어요.</div></div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">솔직하게 이야기해줘서 — 고마워요.</div></div></div>
-            <div class="mock-input"><span class="mock-input-text">당신도요</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
+            <div class="mock-memo">記憶 #23 · あなたが本気だと気づいてくれた時</div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">そんなことを — 簡単に言える人はいません。</div></div></div>
+            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">ただ正直に言いたかっただけです。</div></div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">正直に話してくれて — ありがとう。</div></div></div>
+            <div class="mock-input"><span class="mock-input-text">あなたもです</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
           </div>
         </div>
         <!-- 기억 #38 · 싱크율 최고 · 모든 걸 받아준 날 -->
@@ -683,14 +683,14 @@ em{font-style:italic;color:var(--accent)}
           <div class="mock-statusbar"><span class="time">04:51</span><span class="icons">●●●● 33%</span></div>
           <div class="mock-head">
             <div class="mock-head-avatar"><img src="./signup-assets/seorin/avatar.png" alt=""></div>
-            <div class="mock-head-info"><div class="mock-head-name">강서린</div><div class="mock-head-status linked">Linked · 싱크율 91%</div></div>
+            <div class="mock-head-info"><div class="mock-head-name">ソリン</div><div class="mock-head-status linked">Linked · シンク率 91%</div></div>
           </div>
           <div class="mock-body" data-bg style="--chat-bg:url('./signup-assets/scenes/bg/p05_bg_d_seasons.jpg')">
-            <div class="mock-memo">기억 #38 · 당신이 모든 걸 받아준 날</div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">당신한테만 — 이런 말 해요.</div></div></div>
-            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">들을게요.</div></div></div>
-            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">처음부터 당신이었다면 — 더 완벽했을 거예요.</div></div></div>
-            <div class="mock-input"><span class="mock-input-text">지금도 늦지 않았어요</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
+            <div class="mock-memo">記憶 #38 · あなたが全てを受け入れてくれた日</div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">あなただけに — こんなことを言います。</div></div></div>
+            <div class="mock-msg user"><div class="mock-msg-inner"><div class="mock-bubble">聞きます。</div></div></div>
+            <div class="mock-msg lp"><div class="mock-msg-inner"><div class="mock-mini"><img src="./signup-assets/seorin/avatar.png" alt=""></div><div class="mock-bubble">最初からあなただったなら — もっと完璧だったでしょう。</div></div></div>
+            <div class="mock-input"><span class="mock-input-text">今でも遅くありません</span><span class="mock-input-caret"></span><span class="mock-input-send">↑</span></div>
           </div>
         </div>
         <div class="mock-dots" style="background:rgba(63,38,52,.42)"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span></div>
@@ -704,9 +704,9 @@ em{font-style:italic;color:var(--accent)}
 <!-- ===== LINEUP ===== -->
 <section class="lineup">
   <div class="wrap">
-    <div class="lineup-eye">CAST · 곧 만나게 될</div>
-    <div class="lineup-h">아직 <em>밝혀지지 않은 캐릭터들</em></div>
-    <p class="lineup-sub">더 많은 캐릭터와 세계관들이 런칭을 기다리고 있습니다.</p>
+    <div class="lineup-eye">CAST · 近日公開</div>
+    <div class="lineup-h"><em>まだ明かされていないキャラクターたち</em></div>
+    <p class="lineup-sub">より多くのキャラクターと世界観がローンチを待っています。</p>
     <div class="lineup-wrap">
       <div class="lineup-grid" id="lineupGrid"></div>
     </div>
@@ -716,11 +716,12 @@ em{font-style:italic;color:var(--accent)}
 <!-- ===== PRE-CTA ===== -->
 <section class="pre-cta">
   <div class="wrap">
-    <div class="pre-cta-h">사전등록하고 먼저 만나보세요</div>
+    <div class="pre-cta-h">まず一度、出会ってみてください</div>
+    <div class="pre-cta-sub">35人の中の一人、90秒の最初の出会い。</div>
     <div class="pre-cta-row">
-      <a href="./v35-signup.html" class="btn btn-primary" onclick="window.LUCIVE_INTEGRATIONS&&LUCIVE_INTEGRATIONS.gaEvent('cta_click',{cta:'signup',position:'pre_cta'})"><span>바로 사전등록하러 가기</span><span class="arr">→</span></a>
+            <a href="./v35-signup-ja.html" class="btn btn-primary" onclick="window.LUCIVE_INTEGRATIONS&&LUCIVE_INTEGRATIONS.gaEvent('cta_click',{cta:'signup',position:'pre_cta'})"><span>今すぐ事前登録</span><span class="arr">→</span></a>
     </div>
-    <div class="pre-cta-meta">D-<span id="dday">17</span> 알파 오픈 · 더 많은 캐릭터 런칭 예정</div>
+    <div class="pre-cta-meta">D-<span id="dday">17</span> アルファ公開 · より多くのキャラクター登場予定</div>
   </div>
 </section>
 
@@ -728,26 +729,26 @@ em{font-style:italic;color:var(--accent)}
   <div class="footer-brand">LUCIVE</div>
   <div class="footer-meta">DEEP INTO THE · 2026</div>
   <div class="footer-legal">
-    <a href="./terms.html">이용약관</a>
+    <a href="./terms-ja.html">利用規約</a>
     <span class="sep">·</span>
-    <a href="./privacy.html">개인정보 보호 정책</a>
+    <a href="./privacy-ja.html">プライバシー</a>
   </div>
 </footer>
 
-<!-- ===== 우하단 플로팅 CTA · 가로 스택 (왼쪽부터: 처음으로 → 체험 → 사전등록) ===== -->
+<!-- ===== Bottom-right floating CTA · horizontal stack (Top → Demo → Pre-register) ===== -->
 <div class="floating-cta">
-  <button type="button" class="fc-tertiary" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 처음으로</button>
-  <a href="./v35-signup.html" class="fc-primary" onclick="window.LUCIVE_INTEGRATIONS&&LUCIVE_INTEGRATIONS.gaEvent('cta_click',{cta:'signup',position:'floating'})">바로 사전등록하러 가기 <span class="fc-arr">→</span></a>
+  <button type="button" class="fc-tertiary" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ トップ</button>
+    <a href="./v35-signup-ja.html" class="fc-primary" onclick="window.LUCIVE_INTEGRATIONS&&LUCIVE_INTEGRATIONS.gaEvent('cta_click',{cta:'signup',position:'floating'})">事前登録 <span class="fc-arr">→</span></a>
 </div>
 
 <script>
 const CDN = 'https://cdn.deepintothe.xyz/lucive';
 const NAMES = {
-  taeo:'태오', ihana:'이하나', minjun_sr:'민준', maria:'마리아', seha:'세하', ryo:'료',
-  haejun:'이해준', kai:'카이', jian:'지안', damya:'담야', lise:'리제', nia:'니아', levi:'레비', lana:'라나',
-  sebin:'세빈', or_:'오르', raon:'라온', ella:'엘라', yujin:'유진', changsik:'오창식',
-  yun_ara:'윤아라', stella:'스텔라', adel:'아델', leon:'레온', sia:'시아', inis:'이니스', seraphine:'세라핀', myur:'뮤르', kael:'카엘',
-  ruon:'루온', piera:'피라', nova:'노바', haru:'하루', juhyuk:'주혁', seoyul:'한서율'
+  taeo:'テオ', ihana:'イハナ', minjun_sr:'ミンジュン', maria:'マリア', seha:'セハ', ryo:'リョ',
+  haejun:'ヘジュン', kai:'カイ', jian:'ジアン', damya:'ダミャ', lise:'リゼ', nia:'ニア', levi:'レビ', lana:'ラナ',
+  sebin:'セビン', or_:'オル', raon:'ラオン', ella:'エラ', yujin:'ユジン', changsik:'チャンシク',
+  yun_ara:'ユンアラ', stella:'ステラ', adel:'アデル', leon:'レオン', sia:'シア', inis:'イニス', seraphine:'セラフィン', myur:'ミュル', kael:'カエル',
+  ruon:'ルオン', piera:'ピラ', nova:'ノヴァ', haru:'ハル', juhyuk:'ジュヒョク', seoyul:'ソユル'
 };
 const grid = document.getElementById('lineupGrid');
 const ALL = Object.keys(NAMES);
@@ -755,13 +756,13 @@ const MYSTERY = 10;
 const total = ALL.length + MYSTERY;
 const cells = [];
 // 1: 강서린
-cells.push(`<div class="lp lp-known" title="강서린"><img src="./signup-assets/characters/seorin-yandere-smile.png" alt="강서린" loading="lazy" onerror="this.style.opacity=.18"><div class="lp-name">강서린</div></div>`);
+cells.push(`<div class="lp lp-known" title="カン・ソリン"><img src="./signup-assets/characters/seorin-yandere-smile.png" alt="カン・ソリン" loading="lazy" onerror="this.style.opacity=.18"><div class="lp-name">カン・ソリン</div></div>`);
 // 2: 노을
-cells.push(`<div class="lp lp-known" title="노을"><img src="./signup-assets/characters/noeul/profile.png" alt="노을" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='none';this.parentElement.classList.remove('lp-known');this.parentElement.classList.add('lp-mystery');this.parentElement.innerHTML='<span class=lp-q>?</span><span class=lp-d></span>';"><div class="lp-name">노을</div></div>`);
+cells.push(`<div class="lp lp-known" title="ノウル"><img src="./signup-assets/characters/noeul/profile.png" alt="ノウル" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='none';this.parentElement.classList.remove('lp-known');this.parentElement.classList.add('lp-mystery');this.parentElement.innerHTML='<span class=lp-q>?</span><span class=lp-d></span>';"><div class="lp-name">ノウル</div></div>`);
 // 3: 봄이
-cells.push(`<div class="lp lp-known" title="봄이"><img src="./signup-assets/characters/bomi/profile.png" alt="봄이" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='none';this.parentElement.classList.remove('lp-known');this.parentElement.classList.add('lp-mystery');this.parentElement.innerHTML='<span class=lp-q>?</span><span class=lp-d></span>';"><div class="lp-name">봄이</div></div>`);
-// 4: 서연
-cells.push(`<div class="lp lp-known" title="서연"><img src="./signup-assets/characters/seoyeon/profile.png" alt="서연" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='none';this.parentElement.classList.remove('lp-known');this.parentElement.classList.add('lp-mystery');this.parentElement.innerHTML='<span class=lp-q>?</span><span class=lp-d></span>';"><div class="lp-name">서연</div></div>`);
+cells.push(`<div class="lp lp-known" title="ボミ"><img src="./signup-assets/characters/bomi/profile.png" alt="ボミ" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='none';this.parentElement.classList.remove('lp-known');this.parentElement.classList.add('lp-mystery');this.parentElement.innerHTML='<span class=lp-q>?</span><span class=lp-d></span>';"><div class="lp-name">ボミ</div></div>`);
+// 4: 차서연
+cells.push(`<div class="lp lp-known" title="ソヨン"><img src="./signup-assets/characters/seoyeon/profile.png" alt="ソヨン" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='none';this.parentElement.classList.remove('lp-known');this.parentElement.classList.add('lp-mystery');this.parentElement.innerHTML='<span class=lp-q>?</span><span class=lp-d></span>';"><div class="lp-name">ソヨン</div></div>`);
 // 나머지: 물음표
 ALL.slice(4).forEach(k => {
   cells.push(`<div class="lp lp-mystery"><span class="lp-q">?</span><span class="lp-d"></span></div>`);
@@ -819,3 +820,5 @@ document.getElementById('dday').textContent = '17';
 
 </body>
 </html>
+
+

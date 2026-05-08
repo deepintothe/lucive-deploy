@@ -17,11 +17,11 @@ window.LUCIVE_INTEGRATIONS = (function(){
     // Klaviyo Public API Key (Account → Settings → API Keys)
     // 형식: 6자 영숫자 (예: 'AbC123')
     // ⚠️ Private Key (pk_xxx...) 는 절대 여기 두지 마세요. 이 파일은 브라우저로 노출됩니다.
-    KLAVIYO_PUBLIC_KEY: 'VLcTTr',
+    KLAVIYO_PUBLIC_KEY: 'SUzTai',
 
     // Klaviyo List ID (Audience → Lists & Segments → 해당 리스트 → Settings)
     // 형식: 6자 영숫자 (예: 'XyZ789')
-    KLAVIYO_LIST_ID: 'VMHgYx',
+    KLAVIYO_LIST_ID: 'RPr3C5',
 
     // GA4 Measurement ID (Admin → Data Streams → Web Stream)
     // 형식: 'G-9QC121BKET'
@@ -29,7 +29,7 @@ window.LUCIVE_INTEGRATIONS = (function(){
 
     // Zapier Catch Webhook URL (선택 · Slack 알림 / Sheet 백업)
     // 형식: 'https://hooks.zapier.com/hooks/catch/...'
-    ZAPIER_WEBHOOK: 'https://hooks.zapier.com/hooks/catch/27287979/uva8pju/',
+    ZAPIER_WEBHOOK: 'https://script.google.com/macros/s/AKfycbykOqNs2eT7Y72a8MKdi5eIRViC6l5K11cQBgnf5Kal8QACmz9HjFTcr73LnVyWq-E/exec',
 
     // 언어별 커뮤니티 URL · 사전등록 후 안내에 사용
     // ko / en / ja (all Discord)
@@ -214,13 +214,17 @@ window.LUCIVE_INTEGRATIONS = (function(){
     }
     if(CONFIG.DEBUG){ dbg('zapier (debug)', payload); return true; }
     try{
-      const res = await fetch(CONFIG.ZAPIER_WEBHOOK, {
+      // no-cors: Google Apps Script는 OPTIONS preflight를 처리하지 않으므로
+      // Content-Type 헤더 없이 보내야 preflight가 생략되어 실제 POST가 도달한다.
+      // Apps Script에서는 e.postData.contents 를 JSON.parse 해서 읽으면 된다.
+      const enriched = Object.assign({ language: detectLang() }, payload);
+      await fetch(CONFIG.ZAPIER_WEBHOOK, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        mode: 'no-cors',
+        body: JSON.stringify(enriched)
       });
-      dbg('zapier', res.status);
-      return res.ok;
+      dbg('zapier sent (no-cors)');
+      return true;
     }catch(e){ console.error('Zapier webhook failed', e); return false; }
   }
 
